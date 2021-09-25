@@ -19,6 +19,21 @@ public class ShoppingCartPage {
     @FindBy(id = "SubmitLogin")
     static WebElement signInButton;
 
+    @FindBy (xpath = "//a[@title='View my shopping cart']")
+    static WebElement viewShoppingCartLink;
+
+    @FindBy (xpath = "//a[@class='button btn btn-default standard-checkout button-medium']")
+    static WebElement proceedToCheckoutLink;
+
+    @FindBy(name = "processAddress")
+    static WebElement proceedToCheckoutAddressButton;
+
+    @FindBy (id = "cgv")
+    static WebElement termsOfServiceCheckbox;
+
+    @FindBy(name = "processCarrier")
+    static WebElement proceedToCheckoutCarrierButton;
+
     public void clickSignInLink(){
         Utilities.waitTillElement(signInLink, EnvironmentSetup.driver);
         signInLink.click();
@@ -31,6 +46,35 @@ public class ShoppingCartPage {
         passwordEditBox.sendKeys(password);
         Utilities.waitTillElement(signInButton, EnvironmentSetup.driver);
         signInButton.click();
+    }
+
+    public void clickShoppingCartLink(){
+        Utilities.waitTillElement(viewShoppingCartLink, EnvironmentSetup.driver);
+        viewShoppingCartLink.click();
+    }
+
+    public void clickProceedToCheckoutLink(){
+        Utilities.scrollDown(EnvironmentSetup.driver);
+        Utilities.waitTillElement(proceedToCheckoutLink, EnvironmentSetup.driver);
+        proceedToCheckoutLink.click();
+//        Utilities.scrollDown(EnvironmentSetup.driver);
+//        Utilities.javascriptClickButton(proceedToCheckoutLink,EnvironmentSetup.driver);
+    }
+
+    public void clickProceedToCheckoutAddressButton(){
+        Utilities.waitTillElement(proceedToCheckoutAddressButton, EnvironmentSetup.driver);
+        proceedToCheckoutAddressButton.click();
+    }
+
+    public void selectTermsOFServiceCheckbox(){
+        Utilities.waitTillElement(termsOfServiceCheckbox, EnvironmentSetup.driver);
+        termsOfServiceCheckbox.click();
+
+    }
+
+    public void clickProceedToCheckoutCarrierButton(){
+        Utilities.waitTillElement(proceedToCheckoutCarrierButton, EnvironmentSetup.driver);
+        proceedToCheckoutCarrierButton.click();
     }
 
 }

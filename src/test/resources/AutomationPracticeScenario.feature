@@ -12,6 +12,8 @@ Feature: Verification of Automation Practice Business Scenario
       Then the user clicks on Add to cart button
       And the user proceeds to checkout the selected product
       Then the user clicks on Sign-In Link and enters username as "hisariya.rishi@gmail.com" and Password as "India@007"
+      Then the user enters Shipping Details
+
 
 
 

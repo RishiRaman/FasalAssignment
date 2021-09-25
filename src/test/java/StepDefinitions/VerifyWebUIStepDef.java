@@ -70,5 +70,14 @@ public class VerifyWebUIStepDef {
         shoppingCartPage.clickSignInLink( );
         shoppingCartPage.enterLoginDetails(username, password);
     }
+
+    @Then("the user enters Shipping Details")
+    public void enterShippingDetails() {
+        shoppingCartPage.clickShoppingCartLink();
+        shoppingCartPage.clickProceedToCheckoutLink();
+        shoppingCartPage.clickProceedToCheckoutAddressButton();
+        shoppingCartPage.selectTermsOFServiceCheckbox();
+        shoppingCartPage.clickProceedToCheckoutCarrierButton();
+    }
 }
 
