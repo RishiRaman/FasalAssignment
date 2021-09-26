@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.testng.Assert;
+import org.junit.Assert;
 import utilities.Utilities;
 
 public class VerifyWebServiceStepDef {
@@ -26,12 +26,14 @@ public class VerifyWebServiceStepDef {
                 .body(requestBody).when().post(RestAssured.baseURI);
 
         // Validate the Response Status code and Response body
-        Assert.assertEquals(response.statusCode(), 200,
-                "Validate REGISTER-SUCCESSFUL status code is appropriate.");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("id"),
-                Integer.valueOf("4"),"Validate the id in response body is appropriate");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("token"),
-                "QpwL5tke4Pnpja7X4","Validate the token in response body is appropriate");
+        Assert.assertEquals("Validate REGISTER-SUCCESSFUL status code is appropriate."
+                ,String.valueOf(response.statusCode()), "200" );
+        Assert.assertEquals("Validate the id in response body is appropriate",
+                JsonPath.from(response.getBody().asString()).get("id"),
+                Integer.valueOf("4"));
+        Assert.assertEquals("Validate the token in response body is appropriate",
+                JsonPath.from(response.getBody().asString()).get("token"),
+                "QpwL5tke4Pnpja7X4");
     }
 
     @And("the POST call is done to CREATE Api and response is validated Successfully")
@@ -43,12 +45,14 @@ public class VerifyWebServiceStepDef {
                 .body(requestBody).when().post(RestAssured.baseURI);
 
         // Validate the Response Status code and Response body
-        Assert.assertEquals(response.statusCode(), 201,
-                "Validate CREATE POST call status code is appropriate.");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("name"),
-                "morpheus","Validate name in response body is appropriate");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("job"),
-                "leader","Validate the job in response body is appropriate");
+        Assert.assertEquals("Validate CREATE POST call status code is appropriate.",
+                String.valueOf(response.statusCode()), "201");
+        Assert.assertEquals("Validate name in response body is appropriate" ,
+                JsonPath.from(response.getBody().asString()).get("name"),
+                "morpheus");
+        Assert.assertEquals("Validate the job in response body is appropriate",
+                JsonPath.from(response.getBody().asString()).get("job"),
+                "leader");
 
     }
 
@@ -59,10 +63,10 @@ public class VerifyWebServiceStepDef {
                 when().get(RestAssured.baseURI);
 
         // Validate the Response Status code and Response body
-        Assert.assertEquals(response.statusCode(), 200,
-                "Validate SINGLE USER GET call status code is appropriate.");
-        Assert.assertEquals(Utilities.singleUserExpectedResponseBody(), response.getBody().asString(),
-                "Validate the SINGLE USER GET call response body is appropriate.");
+        Assert.assertEquals("Validate SINGLE USER GET call status code is appropriate.",
+                String.valueOf(response.statusCode()), "200");
+        Assert.assertEquals("Validate the SINGLE USER GET call response body is appropriate." ,
+                Utilities.singleUserExpectedResponseBody(), response.getBody().asString() );
 
     }
 
@@ -73,10 +77,10 @@ public class VerifyWebServiceStepDef {
                 queryParam("page","2").when().get(RestAssured.baseURI);
 
         // Validate the Response Status code and Response body
-        Assert.assertEquals(response.statusCode(), 200,
-                "Validate SINGLE USER GET call status code is appropriate.");
-        Assert.assertEquals(Utilities.listUsersExpectedResponseBody(), response.getBody().asString(),
-                "Validate the SINGLE USER GET call response body is appropriate.");
+        Assert.assertEquals("Validate SINGLE USER GET call status code is appropriate.",
+                String.valueOf(response.statusCode()), "200");
+        Assert.assertEquals("Validate the SINGLE USER GET call response body is appropriate.",
+                Utilities.listUsersExpectedResponseBody(), response.getBody().asString());
     }
 
     @Then("the PUT call is done to modify user and response is validated Successfully")
@@ -89,12 +93,14 @@ public class VerifyWebServiceStepDef {
                 .when().put(RestAssured.baseURI);
 
         // Validate the Response Status code and Response body
-        Assert.assertEquals(response.statusCode(), 200,
-                "Validate SINGLE USER GET call status code is appropriate.");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("name"),
-                "morpheus","Validate name in response body is appropriate");
-        Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("job"),
-                "zion resident","Validate the job in response body is appropriate");
+        Assert.assertEquals("Validate SINGLE USER GET call status code is appropriate.",
+                String.valueOf(response.statusCode()), "200");
+        Assert.assertEquals("Validate name in response body is appropriate" ,
+                JsonPath.from(response.getBody().asString()).get("name"),
+                "morpheus");
+        Assert.assertEquals("Validate the job in response body is appropriate",
+                JsonPath.from(response.getBody().asString()).get("job"),
+                "zion resident");
     }
 
     @Then("the DELETE call is done and response is validated Successfully")
@@ -106,8 +112,8 @@ public class VerifyWebServiceStepDef {
         response = RestAssured.given().header("Content-Type","application/json")
                 .when().delete(RestAssured.baseURI);
         // Validate the Response Status code
-        Assert.assertEquals(response.statusCode(), 204,
-                "Validate DELETE user call status code is appropriate.");
+        Assert.assertEquals("Validate DELETE user call status code is appropriate.",
+                String.valueOf(response.statusCode()), "204");
     }
 }
 

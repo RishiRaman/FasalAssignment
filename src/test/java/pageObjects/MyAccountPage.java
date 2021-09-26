@@ -6,9 +6,6 @@ import utilities.Utilities;
 
 public class MyAccountPage {
 
-    @FindBy(linkText = "My addresses" )
-    static WebElement MyAddressesLink;
-
     @FindBy(xpath = "//a[@title='Pay by bank wire']")
     static WebElement payBankWireLink;
 
@@ -20,11 +17,6 @@ public class MyAccountPage {
 
     @FindBy(xpath = "//*[contains(text(),'Your order on My Store is complete.')]")
     static WebElement orderCompleteText;
-
-    public void clickMyAddressesLink(){
-        Utilities.waitTillElement(MyAddressesLink, EnvironmentSetup.driver);
-        MyAddressesLink.click();
-    }
 
     public void clickPayBankWireLink(){
         Utilities.waitTillElement(payBankWireLink, EnvironmentSetup.driver);

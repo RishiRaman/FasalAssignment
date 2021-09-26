@@ -3,7 +3,7 @@ package StepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.testng.Assert;
+import org.junit.Assert;
 import pageObjects.*;
 
 public class VerifyWebUIStepDef {
@@ -82,9 +82,8 @@ public class VerifyWebUIStepDef {
     @Then("the user verifies the shopping summary")
     public void verifyShoppingSummary() {
         myAccountPage.clickPayBankWireLink();
-        Assert.assertEquals(myAccountPage.getShortSummaryText(),
-                "You have chosen to pay by bank wire. Here is a short summary of your order:",
-                "Validate the final order Summary ");
+        Assert.assertEquals("Validate the Shopping Summary Text.",myAccountPage.getShortSummaryText(),
+                "You have chosen to pay by bank wire. Here is a short summary of your order:");
     }
 
     @And("the user verifies the shopping is complete")
