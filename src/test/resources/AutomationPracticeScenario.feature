@@ -13,7 +13,5 @@ Feature: Verification of Automation Practice Business Scenario
       And the user proceeds to checkout the selected product
       Then the user clicks on Sign-In Link and enters username as "hisariya.rishi@gmail.com" and Password as "India@007"
       Then the user enters Shipping Details
-
-
-
-
+      Then the user verifies the shopping summary
+      And the user verifies the shopping is complete

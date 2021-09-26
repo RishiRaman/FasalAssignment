@@ -78,5 +78,19 @@ public class VerifyWebUIStepDef {
         shoppingCartPage.selectTermsOFServiceCheckbox();
         shoppingCartPage.clickProceedToCheckoutCarrierButton();
     }
+
+    @Then("the user verifies the shopping summary")
+    public void verifyShoppingSummary() {
+        myAccountPage.clickPayBankWireLink();
+        Assert.assertEquals(myAccountPage.getShortSummaryText(),
+                "You have chosen to pay by bank wire. Here is a short summary of your order:",
+                "Validate the final order Summary ");
+    }
+
+    @And("the user verifies the shopping is complete")
+    public void verifyOrderCompleteStatus() {
+        myAccountPage.clickConfirmOrderButton();
+        myAccountPage.getOrderCompleteText();
+    }
 }
 
