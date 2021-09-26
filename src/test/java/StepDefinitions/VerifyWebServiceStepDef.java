@@ -21,9 +21,11 @@ public class VerifyWebServiceStepDef {
         String requestBody = Utilities.formRequestBody("email","eve.holt@reqres.in",
                 "password","pistol");
 
+        // Request is sent
         response =  RestAssured.given().header("Content-Type","application/json")
                 .body(requestBody).when().post(RestAssured.baseURI);
 
+        // Validate the Response Status code and Response body
         Assert.assertEquals(response.statusCode(), 200,
                 "Validate REGISTER-SUCCESSFUL status code is appropriate.");
         Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("id"),
@@ -40,6 +42,7 @@ public class VerifyWebServiceStepDef {
         response =  RestAssured.given().header("Content-Type","application/json")
                 .body(requestBody).when().post(RestAssured.baseURI);
 
+        // Validate the Response Status code and Response body
         Assert.assertEquals(response.statusCode(), 201,
                 "Validate CREATE POST call status code is appropriate.");
         Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("name"),
@@ -55,6 +58,7 @@ public class VerifyWebServiceStepDef {
         response = RestAssured.given().header("Content-Type","application/json").
                 when().get(RestAssured.baseURI);
 
+        // Validate the Response Status code and Response body
         Assert.assertEquals(response.statusCode(), 200,
                 "Validate SINGLE USER GET call status code is appropriate.");
         Assert.assertEquals(Utilities.singleUserExpectedResponseBody(), response.getBody().asString(),
@@ -68,6 +72,7 @@ public class VerifyWebServiceStepDef {
         response = RestAssured.given().header("Content-Type","application/json").
                 queryParam("page","2").when().get(RestAssured.baseURI);
 
+        // Validate the Response Status code and Response body
         Assert.assertEquals(response.statusCode(), 200,
                 "Validate SINGLE USER GET call status code is appropriate.");
         Assert.assertEquals(Utilities.listUsersExpectedResponseBody(), response.getBody().asString(),
@@ -83,6 +88,7 @@ public class VerifyWebServiceStepDef {
         response = RestAssured.given().header("Content-Type","application/json").body(requestBody)
                 .when().put(RestAssured.baseURI);
 
+        // Validate the Response Status code and Response body
         Assert.assertEquals(response.statusCode(), 200,
                 "Validate SINGLE USER GET call status code is appropriate.");
         Assert.assertEquals(JsonPath.from(response.getBody().asString()).get("name"),
@@ -99,7 +105,7 @@ public class VerifyWebServiceStepDef {
 
         response = RestAssured.given().header("Content-Type","application/json")
                 .when().delete(RestAssured.baseURI);
-
+        // Validate the Response Status code
         Assert.assertEquals(response.statusCode(), 204,
                 "Validate DELETE user call status code is appropriate.");
     }

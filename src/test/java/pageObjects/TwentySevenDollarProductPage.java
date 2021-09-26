@@ -16,10 +16,7 @@ public class TwentySevenDollarProductPage {
     @FindBy (xpath = "//a[@title='Proceed to checkout']")
     static WebElement proceedToCheckoutButton;
 
-
-
     public void selectSizeFromDropdown(){
-        //Utilities.waitTillElement(sizeDropdownElement, EnvironmentSetup.driver);
         Select sizeDropdownBox = new Select(sizeDropdownElement);
         sizeDropdownBox.selectByVisibleText("M");
     }

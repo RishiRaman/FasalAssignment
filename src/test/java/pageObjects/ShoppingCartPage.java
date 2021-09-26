@@ -57,8 +57,6 @@ public class ShoppingCartPage {
         Utilities.scrollDown(EnvironmentSetup.driver);
         Utilities.waitTillElement(proceedToCheckoutLink, EnvironmentSetup.driver);
         proceedToCheckoutLink.click();
-//        Utilities.scrollDown(EnvironmentSetup.driver);
-//        Utilities.javascriptClickButton(proceedToCheckoutLink,EnvironmentSetup.driver);
     }
 
     public void clickProceedToCheckoutAddressButton(){

@@ -27,7 +27,6 @@ public class Utilities {
     public static void scrollDown(WebDriver driver){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,850)", "");
-
     }
 
     public static void javascriptClickButton(WebElement element, WebDriver driver){
